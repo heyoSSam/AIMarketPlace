@@ -38,19 +38,19 @@ Welcome to the AI Marketplace! This platform allows users to list, purchase, and
    git clone https://github.com/heyoSSam/AIMarketPlace
    
 2. Navigate to the front/smartcontracts directory:
-
+   ```bash
    cd front
-
+   ```bash
    cd smartcontracts
 
 4. Install dependencies:
-
+   ```bash
    npm install
 
 Make sure you have Hardhat installed.
 
 5. Start the frontend:
-
+   ```bash
    npm run dev
 
 ## License
