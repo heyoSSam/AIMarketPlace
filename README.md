@@ -49,7 +49,7 @@ Welcome to the AI Marketplace! This platform allows users to list, purchase, and
    ```bash
    npm install
 
-   // Make sure you have Hardhat installed and installed dependencies for front and smartcontracts seperately.
+Make sure you have Hardhat installed and installed dependencies for front and smartcontracts seperately.
 
 5. Start the frontend:
    ```bash
