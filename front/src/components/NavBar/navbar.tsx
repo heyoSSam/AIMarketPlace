@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { User, LogIn, LogOut, ShoppingCart, Wallet, Coins } from 'lucide-react';
+import { User, LogIn, LogOut, Wallet, Coins } from 'lucide-react';
 import { ethers } from 'ethers';
+import Web3 from 'web3';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,9 +11,11 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { state } from '@/constants/constants';
+import {contract} from '@/constants/contract';
 
 export default function NavBar(){
     const [account, setAccount] = useState<string>('');
+    const [earnings, setEarnings] = useState<number | null>(null);
 
     const connectWallet = async () => {
         if((window as any).ethereum){
@@ -40,8 +43,27 @@ export default function NavBar(){
         }
     };
 
+    const fetchEarnings = async () => {
+        const accounts = await (window as any).ethereum.request({ method: 'eth_accounts' });
+        try {
+            const earningsValue = await contract.methods.getEarnings(accounts[0]).call();
+            setEarnings(Number(earningsValue));
+        } catch (error) {
+            console.error("Error fetching earnings:", error);
+        }
+    };
+
+    const withDraw = async () => {
+        try{
+            const tx = await contract.methods.withdrawFunds().send({from: state.account});
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
         checkWalletConnection();
+        fetchEarnings();
     }, []);
 
     const logoutWallet = () => {
@@ -65,13 +87,9 @@ export default function NavBar(){
                           <DropdownMenuSeparator />
                           <DropdownMenuItem>
                               <Wallet className="mr-2 h-4 w-4" />
-                              <span>Balance: 1 ETH </span>
+                              <span>Balance: {earnings ? earnings / 10 ** 18 : 0} ETH </span>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
-                              <ShoppingCart className="mr-2 h-4 w-4" />
-                              <span>Create Listing</span>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem onSelect={withDraw}>
                               <Coins className="mr-2 h-4 w-4" />
                               <span>Withdraw</span>
                           </DropdownMenuItem>

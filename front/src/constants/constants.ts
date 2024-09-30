@@ -1,5 +1,5 @@
 import contractAbi from '../../../smartcontracts/artifacts/contracts/AI.sol/AIMarketPlace.json';
-const contractAddress = "0x1E7d75A4f1507fFf1C9bc17F84AAE20355934554";
+const contractAddress = "0x6D90fDd1fA486b29c1f36F7d172Ed20641976F1A";
 const state = {
     account: '',
     setAccount: (value: string) => {
