@@ -18,11 +18,11 @@ Welcome to the AI Marketplace! This platform allows users to list, purchase, and
 
 ## Screenshots 
 
-Marketplace: 
+**Marketplace:** 
 
 ![List of Marketplace](screenshots/main.png)
 
-List submission Form: 
+**List submission Form:** 
 
 ![Submission form](screenshots/Form.png)
 
