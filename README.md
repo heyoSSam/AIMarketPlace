@@ -35,21 +35,23 @@ Welcome to the AI Marketplace! This platform allows users to list, purchase, and
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ai-marketplace.git
-Navigate to the project directory:
+   git clone https://github.com/heyoSSam/AIMarketPlace
+   
+2. Navigate to the front/smartcontracts directory:
 
-cd ai-marketplace
+   cd front
 
-Install dependencies:
+   cd smartcontracts
 
-npm install
-Set up your smart contract environment:
+4. Install dependencies:
+
+   npm install
 
 Make sure you have Hardhat installed.
 
-Start the application:
+5. Start the frontend:
 
-npm start
+   npm run dev
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for more details.
