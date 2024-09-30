@@ -8,10 +8,11 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { state } from '@/constants/constants';
 
 export default function NavBar(){
-    const [account, setAccount] = useState<string | null>(null);
+    const [account, setAccount] = useState<string>('');
 
     const connectWallet = async () => {
         if((window as any).ethereum){
@@ -20,6 +21,7 @@ export default function NavBar(){
                     method:"eth_requestAccounts",
                 });
                 setAccount(accounts[0]);
+                state.setAccount(accounts[0]);
             } catch(error) {
                 console.error("Error connecting to MetaMask:", error);
             }
@@ -33,17 +35,18 @@ export default function NavBar(){
             const accounts = await (window as any).ethereum.request({ method: 'eth_accounts' });
             if (accounts.length > 0) {
               setAccount(accounts[0]);
+              state.setAccount(accounts[0]);
             }
         }
     };
 
-    const logoutWallet = () => {
-        setAccount(null);
-    }
-
     useEffect(() => {
         checkWalletConnection();
     }, []);
+
+    const logoutWallet = () => {
+        setAccount('');
+    }
 
     return (
         <div className="flex justify-between">

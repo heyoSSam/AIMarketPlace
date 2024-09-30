@@ -20,7 +20,7 @@ contract AIMarketPlace {
         address owner; 
     }
 
-    AI[] AIListings; 
+    AI[] public AIListings;
 
     modifier idCheck(uint256 modelId){
         require(modelId < AIListings.length, "There is no model with such ID");
@@ -32,6 +32,10 @@ contract AIMarketPlace {
         AIListings.push(model);
     }
 
+    function getListingsCount() external view returns (uint256) {
+        return AIListings.length;
+    }
+    
     function purchaseModel(uint256 modelId) public payable idCheck(modelId){
         AI memory model = AIListings[modelId];
         earnings[model.owner] += msg.value;

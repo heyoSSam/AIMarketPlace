@@ -1,5 +1,5 @@
 import List from './List';
-import ListForm from './Form'
+import ListForm from './Form';
 
 export default function Market(){
     return (
