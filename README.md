@@ -40,15 +40,16 @@ Welcome to the AI Marketplace! This platform allows users to list, purchase, and
 2. Navigate to the front/smartcontracts directory:
    ```bash
    cd front
+
+   // Or
    
-   ```bash
    cd smartcontracts
 
 4. Install dependencies:
    ```bash
    npm install
 
-Make sure you have Hardhat installed.
+Make sure you have Hardhat installed and installed dependencies for front and smartcontracts seperately.
 
 5. Start the frontend:
    ```bash
